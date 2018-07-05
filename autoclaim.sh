@@ -32,23 +32,23 @@ echo ${passwd} | ${enucli} wallet unlock -n acasa
 st=1
 while [[ ${st} -ne 0 ]]; do
   # try to claim your stakes
-	${enucli} system claimrewards ${BP}
+  ${enucli} system claimrewards ${BP}
   st=$?
   if [[ ${st} -ne 0 ]]; then
     # Wait two seconds between retries.
-  	sleep 2
+    sleep 2
   else
     TS="$(date '+[%Y-%m-%d %H:%M:%S]')"
-		echo "${TS} claimed successfully" >> ${logfile}
-      # Get the coins out of your wallet. WARNING: It will use all your coins from
-      # your wallet. IF you want to keep some aside please configure the variable keep
-      walletcoins=$(${enucli} get currency balance enu.token ${BP} | awk '{print $1}')
-      echo "${TS} enu gained last claim: ${walletcoins}" >> ${logfile}
-      # split wallet's coins in two to stake them evenly. It will get rounded down
-      tostake=$(bc <<< "(${walletcoins} - ${keep}) / 2")
-      # Stake your coins
-      ${enucli} system delegatebw ${BP} ${BP} "${tostake} ENU" "${tostake} ENU"
-	fi
+    echo "${TS} claimed successfully" >> ${logfile}
+    # Get the coins out of your wallet. WARNING: It will use all your coins from
+    # your wallet. IF you want to keep some aside please configure the variable keep
+    walletcoins=$(${enucli} get currency balance enu.token ${BP} | awk '{print $1}')
+    echo "${TS} enu gained last claim: ${walletcoins}" >> ${logfile}
+    # split wallet's coins in two to stake them evenly. It will get rounded down
+    tostake=$(bc <<< "(${walletcoins} - ${keep}) / 2")
+    # Stake your coins
+    ${enucli} system delegatebw ${BP} ${BP} "${tostake} ENU" "${tostake} ENU"
+  fi
 done
 # Lock your wallet.
 ${enucli} wallet lock -n acasa
