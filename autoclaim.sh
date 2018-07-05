@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # I recommend to use this script outside your BP node. If so I fully recommend
 # to do it over a secured connection since you have to send your wallet's pass
-# to your BP (or any other BP) node to be processed.
+# to your BP (or any other BP) node to be processed. Make sure you have a local
+# wallet defined with your BP key imported.
 # This script was inspired by the one created by AnsenYu
 # https://github.com/AnsenYu/ENUAvengers/tree/master/scripts/bpclaim
 # Dragos Vlaicu - 07/05/2018 - BP - dragosvlaicu
