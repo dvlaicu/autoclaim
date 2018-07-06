@@ -1,9 +1,4 @@
 # AUTOCLAIM enu
 # <minute> <hour> <day> <month> <day of week> <command>
-<<<<<<< HEAD
-# the script gets executed everyday at 11:03 AM 
-3 11 * * * /home/dragos/claimandstake/autoclaim.sh <password> BPUsername
-=======
 # the script gets executed everyday at 11:03 AM
 3 11 * * * /path/to/autoclaim.sh <password> BPUsername
->>>>>>> devel
