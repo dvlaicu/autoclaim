@@ -38,6 +38,9 @@ function last() {
   echo ${time_diff}
 }
 
+# lock the timezone to UTC to match the database
+export TZ=Etc/UTC
+
 function logall() {
   tolog=$@
   TS="$(date '+[%Y-%m-%d %H:%M:%S]')"
