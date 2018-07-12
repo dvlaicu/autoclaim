@@ -18,13 +18,22 @@ day=86400
 
 # enucli wallet shortcut if the binaries were not installed after the build
 # followed by the BP http(s) server
-enucli='/home/dragos/enu/build/programs/enucli/enucli -u https://enu.hopto.org'
+enucli='/home/dragos/enu/build/programs/enucli/enucli -u https://enu.vlaicu.pro'
 # The ammount of coins you want to leave in your wallet. The rest will be staked
 # it should be an integer from 0 to whatever you want
 # WARNING: The rest of the coins will be staked
 keep=0
 passwd=$1
 BP=$2
+
+# Telegram configuration
+# telegram bot token ID
+bot_token='<your bot ID'
+# private chat ID
+chat_id='<your chat ID>'
+# enable/disable Telegram chat. If you set the variable to 1 will be anabled.
+# anything else meanse disabled. By default is enabled.
+telechat=1
 
 #script working directory
 script="$(readlink -f $0)"
@@ -42,6 +51,9 @@ function logall() {
   tolog=$@
   TS="$(date '+[%Y-%m-%d %H:%M:%S]')"
   echo "${TS} ${tolog}" | tee -a ${logfile}
+  if [[ ${telechat} -eq 1 ]]; then
+    curl -s https://api.telegram.org/bot${bot_token}/sendMessage -d chat_id="${chat_id}" -d text="${TS} ${tolog}" > /dev/null
+  fi
 }
 
 # Check if the two needed variables were given
