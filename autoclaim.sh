@@ -11,6 +11,9 @@
 
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
+# lock the timezone to UTC to match the database
+export TZ=Etc/UTC
+
 # IF you are not using the default wallet you can mention it here
 wallet='acasa'
 # one day in seconds
@@ -63,9 +66,6 @@ if [ $# -ne 2 ]; then
   logall "Please use the script like this: $0 BPWalletPwd BPUsername"
   exit 1
 fi
-
-
-
 
 # Validate the password format
 if [[ ! $passwd =~ ^PW5.* ]]; then
