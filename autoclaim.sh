@@ -11,6 +11,9 @@
 
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
+# lock the timezone to UTC to match the database
+export TZ=Etc/UTC
+
 # IF you are not using the default wallet you can mention it here
 wallet='acasa'
 # one day in seconds
@@ -37,9 +40,6 @@ function last() {
   time_diff=$((${now_epoch}-$1))
   echo ${time_diff}
 }
-
-# lock the timezone to UTC to match the database
-export TZ=Etc/UTC
 
 function logall() {
   tolog=$@
