@@ -55,9 +55,6 @@ if [ $# -ne 2 ]; then
   exit 1
 fi
 
-
-
-
 # Validate the password format
 if [[ ! $passwd =~ ^PW5.* ]]; then
   logall "Invalid wallet password. Exiting ..."
