@@ -8,8 +8,7 @@ day by cron and it stays in a loop checking if the claim is possible. After it's
 done all tokens from your wallet get staked automatically 50% to CPU and 50% to
 network.
 # How to use it
-## Script configuration. You have some variables that needs to be changed inside
-the script and I will describe them below:
+## Script configuration. You have some variables that needs to be changed inside the script and I will describe them below:
 - wallet: Your wallet name. If you have not specified any you should use: default
 - enucli: is your wallet binary followed by your node or a public node. You should
 use absolute path to your enucli binary that it is compiled with the the rest of
