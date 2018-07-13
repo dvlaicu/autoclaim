@@ -38,6 +38,12 @@ chat_id='<your chat ID>'
 # anything else meanse disabled. By default is enabled.
 telechat=1
 
+# PushBullet configuration
+push_token='<your pushbullet id>'
+# enable/disable PushBullet notifications. If you set the variable to 1 will be anabled.
+# anything else meanse disabled. By default is enabled.
+pushbullet=1
+
 #script working directory
 script="$(readlink -f $0)"
 wd="$(dirname ${script})"
@@ -56,6 +62,10 @@ function logall() {
   echo "${TS} ${tolog}" | tee -a ${logfile}
   if [[ ${telechat} -eq 1 ]]; then
     curl -s https://api.telegram.org/bot${bot_token}/sendMessage -d chat_id="${chat_id}" -d text="${TS} ${tolog}" > /dev/null
+  fi
+  if [[ ${pushbullet} -eq 1 ]]; then
+    curl -u ${push_token}: https://api.pushbullet.com/v2/pushes -d type=note -d title="Enumivo AutoclaimScript" -d body="${TS} ${tolog}"
+
   fi
 }
 
