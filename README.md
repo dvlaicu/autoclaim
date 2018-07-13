@@ -8,7 +8,7 @@ day by cron and it stays in a loop checking if the claim is possible. After it's
 done all tokens from your wallet get staked automatically 50% to CPU and 50% to
 network.
 # How to use it
-* Script configuration. You have some variables that needs to be changed inside
+## Script configuration. You have some variables that needs to be changed inside
 the script and I will describe them below:
 - wallet: Your wallet name. If you have not specified any you should use: default
 - enucli: is your wallet binary followed by your node or a public node. You should
@@ -27,6 +27,6 @@ you check the following url:
 https://api.telegram.org/bot<your Bot ID 12345678:LettersNumbers>/getUpdates
 There you will find the chat id you had with your username.
 telechat: IF you want to disable the chat just change it to 0.
-* Crontab configuration. You should use the cron_entry file found in the repo
+## Crontab configuration. You should use the cron_entry file found in the repo
 There's a small description inside it. IF you have any problems ping me.
 To enter something in crontab: crontab -e
