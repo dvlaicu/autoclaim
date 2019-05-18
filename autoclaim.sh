@@ -85,12 +85,15 @@ fi
 
 # Check last claimed time
 last_claim_time=$(${enucli} get table enumivo enumivo producers -l 10000 | grep -A 6 "${BP}" | awk -F '"' '$2 == "last_claim_time" {print $4}')
+last_claim_time=$(date  -d "${last_claim_time}" +%s)
 if [[ $? -ne 0 || ${last_claim_time} -eq 0 ]]; then
     logall "Invalid last claim time, claim manually to set a relevant time. Exiting ..."
     exit 3
 fi
 # calculate how much time it passed from last claim. if it's under a day we'll wait a bit more.
-last_claimed=$((${last_claim_time} / 1000000))
+# adjust timestamp based on the update
+#last_claimed=$((${last_claim_time} / 1000000))
+last_claimed=${last_claim_time}
 
 
 
